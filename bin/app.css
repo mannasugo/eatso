@@ -575,7 +575,7 @@ section > div {
 
 @media (max-width: 920px) {
 
-  section > div > div {width: 18%}
+  section > div > div {width: 25%}
 }
 
 @media (max-width: 599px) {
@@ -583,7 +583,7 @@ section > div {
   section > div > div {width: 33.33333%;}
 }
 
-@media (max-width: 320px) {
+@media (max-width: 370px) {
 
   section > div > div {width: 50%;}
 }

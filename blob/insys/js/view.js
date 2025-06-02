@@ -72,9 +72,17 @@ let Models = {
 				DOM[0].push([`div`, {style: {[`margin-bottom`]: `${24}px`}}, 
 					[
 						[`img`, {src: `blob/catalog/${Cat.img}`, style: {[`margin-bottom`]: `${8}px`}}],
-						[`span`, {style: {[`font-family`]: `qb`,[`font-size`]: `${10.88}px`}}, `KES${parseFloat(Cat.objs[0][1]).toFixed(2)}`],
-						[`span`, {style: {[`font-family`]: `es`,[`font-size`]: `${12}px`, [`text-transform`]: `capitalize`}}, Cat.label.replaceAll(`_`, ` `)],
-						[`span`, {style: {[`font-size`]: `${10}px`}}, Cat.objs[0][0] + Cat.mass.toLowerCase()]]])
+						[`div`, {class: `_gxM`, style: {[`font-family`]: `qb`,[`font-size`]: `${10.88}px`}}, 
+							[[`span`, {style: {[`align-items`]: `end`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {}, `${parseFloat(Cat.objs[0][1]).toFixed(2)}`]]],
+						[`span`, {style: {[`font-family`]: `es`,[`font-size`]: `${12}px`, margin: `${4}px ${0}`, overflow: `hidden`, [`text-transform`]: `capitalize`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, Cat.label.replaceAll(`_`, ` `)],
+						[`span`, {style: {[`font-size`]: `${10}px`}}, Cat.objs[0][0] + Cat.mass.toLowerCase()],
+						[`div`, {class: `_geQ`, style: {background: `#000000e3`, color: `#fff`, position: `absolute`, right: 0}}, 
+							[
+								[`svg`, {viewbox: `0 0 24 24`, style: {cursor: `pointer`, display: `none`, height: `${8}px`, margin: `${8}px`, width: `${8}px`}}, 
+									[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 2, d: `M0 12 24 12 `}]]], 
+								[`span`, {style: {display: `none`, [`font-family`]: `qb`, [`font-size`]: `${10.88}px`, margin: `${8}px ${0}`}}, `0`],
+								[`svg`, {viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${8}px`, margin: `${8}px`, width: `${8}px`}}, 
+									[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 2, d: `M0 12 24 12 M12 0 12 24`}]]]]]]])
 			}
 		});
 
