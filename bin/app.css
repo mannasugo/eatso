@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'insvg';
-  src: url('/ssl/given/glyphs/din.ttf') format('truetype');
+  src: url('/blob/insys/font/din.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'litera';
-  src: url('/ssl/given/glyphs/litera.ttf') format('truetype');
+  src: url('/blob/insys/font/litera.ttf') format('truetype');
   font-weight: 100;
   font-style: normal;
 }
@@ -33,9 +33,15 @@
 @font-face {
   font-family: intext;
   font-style: normal;
+  font-weight: 100;   
+  src: url(/blob/insys/font/PFDinTextUniversalLight.otf) format("opentype")
+}
+
+@font-face {
+  font-family: cla;
+  font-style: normal;
   font-weight: 100;
-  /*src: url(/ssl/given/glyphs/dinweb.woff2) format("woff2")*/    
-  src: url(/ssl/given/glyphs/PFDinTextUniversalLight.otf) format("opentype")
+  src: url(/blob/insys/font/Inter-Regular.d55e957612a3.woff2) format("woff2")
 }
 
 @font-face {
@@ -46,6 +52,13 @@
 }
 
 @font-face {
+  font-family: gtw;
+  font-style: normal;
+  font-weight: 100;
+  src: url(/blob/insys/font/GT-Walsheim-Regular-4ca5b57c.woff2) format("woff2")
+}
+
+@font-face {
   font-family: generica;
   src: url(/ssl/given/glyphs/Generica_0.otf) format('opentype');
   font-style: normal;
@@ -53,8 +66,8 @@
 }
 
 @font-face {
-  font-family: aspergit;
-  src: url(/ssl/given/glyphs/Aspergit.otf) format('opentype');
+  font-family: asp;
+  src: url(/blob/insys/font/Aspergit.otf) format('opentype');
   font-style: normal;
   font-weight: 100;
 }
@@ -575,7 +588,7 @@ section > div {
 
 @media (max-width: 920px) {
 
-  section > div > div {width: 25%}
+  section > div > div {width: 18%}
 }
 
 @media (max-width: 599px) {

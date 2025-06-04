@@ -40,13 +40,9 @@ class Route {
 
 				let Obj = Tools.typen(XHR.response);
 
-				View.DOM([`div`, [Models.app(Obj)]]);
+				View.DOM([`div`, [Models.app.a(Obj)]]);
 
-				/*document.querySelector(`body`).style.background = `#000`;
-
-				document.querySelector(`#app`).style.height = `unset`;
-
-				Event.app(Web);*/
+				Event.app([Obj]);
 			}
 		}
 	}
