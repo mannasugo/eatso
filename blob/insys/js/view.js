@@ -81,10 +81,10 @@ let Models = {
 							[`div`, {class: `_geQ`, style: {background: `#000000e3`, color: `#fff`, position: `absolute`, right: 0}}, 
 								[
 									[`svg`, {class: `box-`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, display: `none`, height: `${8}px`, margin: `${8}px`, width: `${8}px`}}, 
-										[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 2, d: `M0 12 24 12 `}]]], 
+										[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 1.5, d: `M0 12 24 12 `}]]], 
 									[`span`, {style: {display: `none`, [`font-family`]: `qb`, [`font-size`]: `${10.88}px`, margin: `${8}px ${0}`}}, `0`],
 									[`svg`, {class: `box`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${8}px`, margin: `${8}px`, width: `${8}px`}}, 
-										[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 2, d: `M0 12 24 12 M12 0 12 24`}]]]]]]])
+										[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 1.5, d: `M0 12 24 12 M12 0 12 24`}]]]]]]])
 				}
 			});
 
@@ -114,13 +114,20 @@ let Models = {
 
 			Obj.objs.forEach(Value => {
 
-				DOM[0].push([`div`, {class: `_gxM _geQ`, style: {margin: `${6}px ${0}`}}, 
+				DOM[0].push([`div`, {id: Value[0], class: `_gxM _geQ`, style: {margin: `${6}px ${0}`}}, 
 					[
 						[`div`, {}, 
 							[
 								[`span`, {style: {[`font-size`]: `${11}px`, [`font-weight`]: 600}}, Value[0] + Obj.mass.toLowerCase()],
 								[`div`, {class: `_gxM`, style: {[`font-family`]: ``, [`font-size`]: `${12.88}px`, [`margin-top`]: `${4}px`}}, 
-									[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {}, `${parseFloat(Value[1]).toFixed(2)}`]]]]]]]);
+									[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {}, `${parseFloat(Value[1]).toFixed(2)}`]]]]], 
+						[`div`, {class: `_gZz`}, 
+							[
+								[`svg`, {class: `multibox`, role: `-`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${20}px`, width: `${20}px`}}, 
+									[[`text`, {[`font-size`]: `${16}px`, [`stroke-width`]: 1, [`text-anchor`]: `middle`, x: 12, y: `16`}, `-`]]], 
+								[`span`, {style: {margin: `${0} ${12}px`, [`text-align`]: `center`, width: `${36}px`}}, (!Tools.typen(Clients.box)[Obj.ts] || !Tools.typen(Clients.box)[Obj.ts].objs[Value[0]])? `0`: `${Tools.typen(Clients.box)[Obj.ts].objs[Value[0]]}`],
+								[`svg`, {class: `multibox`, role: `+`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${20}px`, width: `${20}px`}}, 
+									[[`text`, {[`font-size`]: `${16}px`, [`stroke-width`]: 1, [`text-anchor`]: `middle`, x: 12, y: `16`}, `+`]]]]]]]);
 			});
 
 			return [`div`, {style: {bottom: 0, left: 0, margin: `auto`, [`max-width`]: `${360}px`, /*padding: `${8}px`,*/ position: `absolute`, right: 0, width: `${100}%`}}, 
@@ -132,7 +139,10 @@ let Models = {
 								[`div`, {class: `_eYG`, style: {[`margin-right`]: `${6}px`}}, 
 									[
 										[`span`, {style: {[`font-size`]: `${11}px`, [`text-transform`]: `capitalize`}}, Obj.label.replaceAll(`_`, ` `)],
-										[`span`, {style: {color: `#9d9d9d`, [`font-family`]: ``, [`font-size`]: `${9}px`, [`margin-top`]: `${6}px`}}, `${Obj.objs.length} OPTIONS AVAILABLE`]]]]], 
+										[`span`, {style: {color: `#9d9d9d`, [`font-family`]: ``, [`font-size`]: `${9}px`, [`margin-top`]: `${6}px`}}, `${Obj.objs.length} OPTIONS AVAILABLE`]]], 
+								[`div`, {class: `_gZz`}, 
+									[[`svg`, {id: `multiClose`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${12}px`, width: `${12}px`}}, 
+										[[`path`, {fill: `none`, stroke: `#000`, [`stroke-width`]: 2, d: `M0 6 12 18 24 6`}]]]]]]], 
 						[`div`, {style: {padding: `${10}px ${16}px`}}, DOM[0]]]]]];
 		}
 	}
