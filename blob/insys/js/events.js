@@ -121,13 +121,90 @@ class Event {
 
 		this.listen([document.querySelector(`#boxup`), `click`, S => {
 
-			View.pop();
+			let boxup = () => {
 
-			View.DOM([`#modal`, [Models.app.boxup()]]);
+				View.pop();
 
-			document.querySelector(`#modal`).style.display = `flex`;
+				View.DOM([`#modal`, [Models.app.boxup()]]);
 
-			this.listen([document.querySelector(`#boxClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
+				document.querySelector(`#modal`).style.display = `flex`;
+
+				if (document.querySelector(`.multibox`)) {
+
+					document.querySelectorAll(`.multibox`).forEach(VAR => {
+
+						this.listen([VAR, `click`, S => {
+
+							let Slot = Tools.typen(VAR.parentNode.id);
+
+							let Box = Tools.typen(Clients.box);
+
+							if (VAR.getAttribute(`role`) === `-`) {
+
+								if (Tools.typen(Clients.box)[Slot[0]] && Tools.typen(Clients.box)[Slot[0]].objs[Slot[1]]) {
+
+									Box = Tools.typen(Clients.box);
+
+									Box[Slot[0]].objs[Slot[1]][1] -= 1;
+
+									if (Box[Slot[0]].objs[Slot[1]][1] === 0) {
+
+										let Objs = {};
+
+										for (let obj in Box[Slot[0]].objs) {
+
+											if (obj !== Slot[1]) Objs[obj] = Box[Slot[0]].objs[obj];
+										}
+
+										Box[Slot[0]].objs = Objs;
+
+										let Objects = {};
+
+										for (let item in Box) {
+
+											let objs = 0
+
+											for (let obj in Box[item].objs) {objs++}
+
+											if (objs > 0) Objects[item] = Box[item];
+										}
+
+										Box = Objects;
+
+										Clients.box = Tools.coats(Box);
+
+										boxup();
+									}
+
+									Clients.box = Tools.coats(Box);
+
+									VAR.nextSibling.innerText = (!Box[Slot[0]] || !Box[Slot[0]].objs[Slot[1]])? 0: Box[Slot[0]].objs[Slot[1]][1];
+
+									VAR.parentNode.parentNode.querySelector(`.sum`).innerText = (!Box[Slot[0]] || !Box[Slot[0]].objs[Slot[1]])? 0: parseFloat(Box[Slot[0]].objs[Slot[1]][1]*Box[Slot[0]].objs[Slot[1]][0]).toFixed(2);
+								}
+							}
+
+							if (VAR.getAttribute(`role`) === `+`) {
+
+								if (Tools.typen(Clients.box)[Slot[0]].objs[Slot[1]]) {
+
+									Box[Slot[0]].objs[Slot[1]][1] += 1;
+
+									Clients.box = Tools.coats(Box);
+								}
+
+								VAR.previousSibling.innerText = Box[Slot[0]].objs[Slot[1]][1];
+
+								VAR.parentNode.parentNode.querySelector(`.sum`).innerText = parseFloat(Box[Slot[0]].objs[Slot[1]][1]*Box[Slot[0]].objs[Slot[1]][0]).toFixed(2);
+							}
+						}]);
+					});
+				}
+
+				this.listen([document.querySelector(`#boxClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
+			}
+
+			boxup();
 		}]);
 	}
 }

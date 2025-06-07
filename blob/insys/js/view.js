@@ -128,8 +128,8 @@ let Models = {
 								[[`div`, {}, 
 									[
 										[`div`, {class: `_gxM`, style: {[`font-size`]: `${12.88}px`, [`font-weight`]: 600, [`justify-content`]: `end`, [`margin`]: `${4}px ${5}px ${0} ${0}`}}, 
-											[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {}, `${parseFloat(Tools.typen(Clients.box)[item].objs[sub][0]).toFixed(2)}`]]], 
-										[`div`, {class: `_gxM _geQ`, style: {[`margin-top`]: `${4}px`}}, 
+											[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {class: `sum`}, `${parseFloat(parseFloat(Tools.typen(Clients.box)[item].objs[sub][0])*parseFloat(Tools.typen(Clients.box)[item].objs[sub][1])).toFixed(2)}`]]], 
+										[`div`, {id: Tools.coats([item, sub]), class: `_gxM _geQ`, style: {[`margin-top`]: `${4}px`}}, 
 											[
 												[`svg`, {class: `multibox`, role: `-`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${20}px`, width: `${20}px`}}, 
 													[[`text`, {[`font-size`]: `${16}px`, [`stroke-width`]: 1, [`text-anchor`]: `middle`, x: 12, y: `16`}, `-`]]], 
@@ -144,7 +144,7 @@ let Models = {
 							[
 								[`img`, {src: `blob/catalog/${item}.png`, style: {[`width`]: `${36}px`}}], 
 								[`div`, {class: `_eYG`, style: {[`margin-right`]: `${6}px`}}, 
-									[[`span`, {style: {[`font-size`]: `${11}px`, [`text-transform`]: `capitalize`}}, Tools.typen(Clients.box)[item].label]]]]], 
+									[[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `capitalize`}}, Tools.typen(Clients.box)[item].label]]]]], 
 						[`div`, {style: {[`margin-left`]: `${48}px`}}, DOM[1]]]]);
 			}//#eb6538
 
@@ -153,17 +153,17 @@ let Models = {
 					[`div`, {style: {width: `${100}%`}}, 
 						[[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `${1}px solid #ececec`, padding: `${10}px ${16}px`}}, 
 							[ 
-								[`div`, {style: {[`font-weight`]: 600}}, 
+								[`div`, {style: {[`font-weight`]: 300}}, 
 									[
 										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `capitalize`}}, `Review Cart`],
-										[`span`, {style: {color: `#9d9d9d`, [`font-size`]: `${11}px`, [`margin-top`]: `${6}px`}}, `eatSo`]]], 
+										[`span`, {style: {color: `#9d9d9d`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `eatSo`]]], 
 								[`div`, {class: `_gZz`}, 
 									[[`svg`, {id: `boxClose`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${12}px`, width: `${12}px`}}, 
 										[[`path`, {fill: `none`, stroke: `#000`, [`stroke-width`]: 2, d: `M0 6 12 18 24 6`}]]]]]]], 
 						[`div`, {style: {height: `calc(100vh)`, [`max-height`]: `calc(100vh - 188px)`, [`overflow-y`]: `scroll`, padding: `${0}px ${16}px`}}, DOM[0]]]], 
 					[`div`, {style: {background: `#fff`, bottom: 0, position: `absolute`, width: `${100}%`}}, 
 						[[`div`, {style: {margin: `${24}px`}}, 
-							[[`a`, {id: ``, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${12.88}px`, [`font-weight`]: 600, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `proceed to checkout`]]]]]]]
+							[[`a`, {id: ``, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `proceed to checkout`]]]]]]]
 		},
 
 		multi: (Obj) => {
