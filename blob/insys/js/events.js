@@ -16,7 +16,14 @@ class Event {
 
 		let Catalog = {};
 
-		Arg[0].catalog.forEach(Cat => {Catalog[Cat.ts] = Cat});
+		Arg[0].catalog.forEach(Cat => {
+
+			Cat.pay = {};
+
+			Cat.objs.forEach((A) => {Cat.pay[A[0]] = A[1]});
+
+			Catalog[Cat.ts] = Cat;
+		});
 
 		document.querySelectorAll(`.box`).forEach(VAR => {
 
@@ -46,9 +53,9 @@ class Event {
 
 									Box = Tools.typen(Clients.box);
 
-									Box[Slot.id].objs[VAR.parentNode.parentNode.id] -= 1;
+									Box[Slot.id].objs[VAR.parentNode.parentNode.id][1] -= 1;
 
-									if (Box[Slot.id].objs[VAR.parentNode.parentNode.id] === 0) {
+									if (Box[Slot.id].objs[VAR.parentNode.parentNode.id][1] === 0) {
 
 										let Objs = {};
 
@@ -75,7 +82,7 @@ class Event {
 
 									Clients.box = Tools.coats(Box);
 
-									VAR.nextSibling.innerText = (!Box[Slot.id] || !Box[Slot.id].objs[VAR.parentNode.parentNode.id])? 0: Box[Slot.id].objs[VAR.parentNode.parentNode.id];
+									VAR.nextSibling.innerText = (!Box[Slot.id] || !Box[Slot.id].objs[VAR.parentNode.parentNode.id])? 0: Box[Slot.id].objs[VAR.parentNode.parentNode.id][1];
 								}
 							}
 
@@ -83,37 +90,45 @@ class Event {
 
 								if (!Tools.typen(Clients.box)[Slot.id]) {
 
-									Box[Slot.id] = {objs: {}};
+									Box[Slot.id] = {label: Catalog[Slot.id].label.toString().replace(`_`, ` `), mass: Catalog[Slot.id].mass, objs: {}};
 
 									Clients.box = Tools.coats(Box);
 								}
 
 								if (Tools.typen(Clients.box)[Slot.id].objs[VAR.parentNode.parentNode.id]) {
 
-									Box[Slot.id].objs[VAR.parentNode.parentNode.id] += 1;
+									Box[Slot.id].objs[VAR.parentNode.parentNode.id][1] += 1;
 
 									Clients.box = Tools.coats(Box);
 								}
 
 								if (Tools.typen(Clients.box)[Slot.id] && !Tools.typen(Clients.box)[Slot.id].objs[VAR.parentNode.parentNode.id]) {
 
-									Box[Slot.id].objs[VAR.parentNode.parentNode.id] = 1;
+									Box[Slot.id].objs[VAR.parentNode.parentNode.id] = [Catalog[Slot.id].pay[VAR.parentNode.parentNode.id], 1];
 
 									Clients.box = Tools.coats(Box);
 								}
 
-								VAR.previousSibling.innerText = Box[Slot.id].objs[VAR.parentNode.parentNode.id];
+								VAR.previousSibling.innerText = Box[Slot.id].objs[VAR.parentNode.parentNode.id][1];
 							}
 						}]);
 					});
 
-					this.listen([document.querySelector(`#multiClose`), `click`, S => {
-
-						document.querySelector(`#modal`).style.display = `none`;
-					}]);
+					this.listen([document.querySelector(`#multiClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`;}]);
 				}
 			}]);
 		});
+
+		this.listen([document.querySelector(`#boxup`), `click`, S => {
+
+			View.pop();
+
+			View.DOM([`#modal`, [Models.app.boxup()]]);
+
+			document.querySelector(`#modal`).style.display = `flex`;
+
+			this.listen([document.querySelector(`#boxClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
+		}]);
 	}
 }
 
