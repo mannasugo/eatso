@@ -208,11 +208,119 @@ class Event {
 					});
 				}
 
+				this.listen([document.querySelector(`#paymug`), `click`, S => {
+				
+					if (!Clients.mug) {
+
+						View.pop();
+
+						View.DOM([`#modal`, [Models.app.inputMug([0])]]);
+
+						this.mug();
+					}
+				}]);
+
 				this.listen([document.querySelector(`#boxClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
 			}
 
 			boxup();
 		}]);
+	}
+
+	mug () {
+
+		if (document.querySelector(`#modalMugin`)) {
+
+			this.listen([document.querySelector(`#modalMugin`), `click`, S => {
+
+				View.pop();
+
+				View.DOM([`#modal`, [Models.app.inputMug([2])]]);
+
+				this.mug()
+			}]);
+		}
+
+		if (document.querySelector(`#modalMugup`)) {
+
+			this.listen([document.querySelector(`#modalMugup`), `click`, S => {
+
+				View.pop();
+
+				View.DOM([`#modal`, [Models.app.inputMug([0])]]);
+
+				this.mug()
+			}]);
+		}
+
+		if (document.querySelector(`#emailAvail`)) {
+
+			this.listen([document.querySelector(`#emailAvail`), `click`, S => {
+
+				if (!Tools.slim(document.querySelector(`input#email`).value) === true) return;
+
+				let XHR = Tools.pull([
+					`/json/web`, {email: document.querySelector(`input#email`).value, flag: `emailAvail`, pull: `mug`}]);
+
+				document.querySelector(`input#email`).value = ``;
+
+				XHR.onload = () => {
+
+					let Obj = Tools.typen(XHR.response);
+
+					if (Obj.email) {
+
+						View.pop();
+
+						View.DOM([`#modal`, [Models.app.inputMug([1])]]);
+
+						this.listen([document.querySelector(`#saltAvail`), `click`, S => {
+
+							if (!Tools.slim(document.querySelector(`input#lock`).value) === true) return;
+
+							let XHR = Tools.pull([
+								`/json/web`, {email: Obj.email, salt: document.querySelector(`input#lock`).value, flag: `saltAvail`, pull: `mug`}]);
+
+							XHR.onload = () => {
+
+								let Obj = Tools.typen(XHR.response);
+
+								if (Obj && Obj.md) {
+
+									Clients.mug = Obj.md;
+
+									window.location = window.location;
+								}
+							}
+						}]);
+					}
+				}
+			}]);
+		}
+
+		if (document.querySelector(`#emailSalt`)) {
+
+			this.listen([document.querySelector(`#emailSalt`), `click`, S => {
+
+				if (!Tools.slim(document.querySelector(`input#email`).value) === true || !Tools.slim(document.querySelector(`input#salt`).value) === true) return;
+
+				let XHR = Tools.pull([
+					`/json/web`, {
+						email: document.querySelector(`input#email`).value, flag: `emailSalt`, pull: `mug`, salt: document.querySelector(`input#salt`).value}]);
+
+				XHR.onload = () => {
+
+					let Obj = Tools.typen(XHR.response);
+
+					if (Obj && Obj.md) {
+
+						Clients.mug = Obj.md;
+
+						window.location = window.location;
+					}
+				}
+			}]);
+		}
 	}
 }
 

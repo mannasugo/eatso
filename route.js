@@ -95,6 +95,68 @@ class Route {
 
 								Arg[1].end(Tools.coats({catalog: Objs}));
 							}
+
+							if (Pulls.pull === `mug`) { 
+
+								if (Pulls.flag === `emailAvail`) {
+
+									let Mail = [];
+
+									Raw.mugs[0].forEach(Mug => {
+
+										if (Mug.email === Pulls.email) Mail.push(Pulls.email);
+									});
+
+									if (Mail.length === 0) {
+
+										Arg[1].end(Tools.coats({email: Pulls.email}));
+									}
+								}
+
+								if (Pulls.flag === `emailSalt`) {
+
+									let Obj = [];
+
+									Raw.mugs[0].forEach(Mug => {
+
+										if (Mug.email === Pulls.email 
+											&& Mug.lock === createHash(`md5`).update(`${Pulls.salt}`, `utf8`).digest(`hex`)) {
+
+											Obj = [Mug.md];
+										}
+									});
+
+									if (Obj.length > 0) {
+
+										Arg[1].end(Tools.coats({md: Obj[0]}));
+									}
+								}
+
+								if (Pulls.flag === `saltAvail`) {
+
+									let Mail = [];
+
+									Raw.mugs[0].forEach(Mug => {
+
+										if (Mug.email === Pulls.email) Mail.push(Pulls.email);
+									});
+
+									if (Mail.length === 0) {
+
+										let TZ = new Date().valueOf();
+
+										Sql.puts([`mugs`, {
+											email: Pulls.email,
+											lock: createHash(`md5`).update(Pulls.salt, `utf8`).digest(`hex`),
+											md: createHash(`md5`).update(`${TZ}`, `utf8`).digest(`hex`),
+											stamp: TZ
+										}, (sqlObj) => {
+
+											Arg[1].end(Tools.coats({md: createHash(`md5`).update(`${TZ}`, `utf8`).digest(`hex`)}));
+										}]);
+									}
+								}
+							}
 						});
 					}
 				}

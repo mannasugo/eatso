@@ -172,11 +172,52 @@ let Models = {
 									[
 										[`span`, {style: {[`font-size`]: `${13}px`}}, `Sub total`], 
 										[`div`, {class: `_gZz`}, 
-											[[`div`, {class: `_gxM`, style: {[`font-size`]: `${15}px`, [`font-weight`]: 600, [`justify-content`]: `end`}}, 
+											[[`div`, {class: `_gxM`, style: {[`font-size`]: `${15}px`, [`font-weight`]: 300, [`justify-content`]: `end`}}, 
 												[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {id: `total`}, `${parseFloat(float).toFixed(2)}`]]]]]]],
 								[`div`, {style: {display: (!Clients.mug)? `flex`: `none`, [`margin-bottom`]: `${12}px`}}, 
 									[[`span`, {style: {[`font-size`]: `${13}px`}}, `Almost There`], [`span`, {style: {color: `#747474`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `Signin or Signup to place an order`]]],
-								[`a`, {id: ``, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, (!Clients.mug)? `Continue`: `proceed to checkout`]]]]]]]
+								[`a`, {id: `paymug`, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, (!Clients.mug)? `Continue`: `proceed to checkout`]]]]]]]
+		}, 
+
+		inputMug: (Arg) => {
+
+			let DOM = [];
+
+			DOM[0] = [`section`, {}, 
+				[
+					[`h2`, {style: {[`font-size`]: `${19}px`, [`margin-top`]: `${28}px`}}, `Welcome to eatSo`],
+					[`div`, {style: {[`margin-top`]: `${22}px`}}, 
+						[
+							[`label`, {style: {[`font-size`]: `${10.88}px`, [`margin-bottom`]: `${3}px`}}, `Email`], 
+							[`input`, {id: `email`, placeholder: `Email`, type: `email`, style: {background: `#66666629`, [`block-size`]: `${32}px`, border: `none`, [`font-family`]: `qb`, [`font-size`]: `${11.88}px`, [`letter-spacing`]: `${1.2}px`, outline: `none`, padding: `${8}px ${12}px`, width: `${100}%`}}]]], 
+					[`a`, {id: `emailAvail`, href: `javascript:;`, style: {[`align-content`]: `center`, background: `#eb6538`, [`block-size`]: `${32}px`, color: `#fff`, display: `inline-grid`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${16}px`, [`text-align`]: `center`}}, `Continue`],
+					[`a`, {id: `modalMugin`, href: `javascript:;`, style: {color: `#eb6538`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${16}px`, [`text-align`]: `center`}}, `Sign in`]]];
+
+			DOM[1] = [`section`, {}, 
+				[
+					[`h2`, {style: {[`font-size`]: `${19}px`, [`margin-top`]: `${28}px`}}, `Welcome to eatSo`],
+					[`div`, {style: {[`margin-top`]: `${22}px`}}, 
+						[
+							[`label`, {style: {[`font-size`]: `${10.88}px`, [`margin-bottom`]: `${3}px`}}, `Password`], 
+						[`input`, {id: `lock`, placeholder: `Create password`, type: `password`, style: {background: `#66666629`, [`block-size`]: `${32}px`, border: `none`, [`font-family`]: `qb`, [`font-size`]: `${11.88}px`, [`letter-spacing`]: `${1.2}px`, outline: `none`, padding: `${8}px ${12}px`, width: `${100}%`}}]]], 
+					[`a`, {id: `saltAvail`, href: `javascript:;`, style: {[`align-content`]: `center`, background: `#eb6538`, [`block-size`]: `${32}px`, color: `#fff`, display: `inline-grid`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${16}px`, [`text-align`]: `center`}}, `Continue`],
+					[`a`, {href: `javascript:;`, style: {color: `#eb6538`, display: `none`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${16}px`, [`text-align`]: `center`}}, `Sign in`]]];
+
+			DOM[2] = [`section`, {}, 
+				[
+					[`h2`, {style: {[`font-size`]: `${19}px`, [`margin-top`]: `${28}px`}}, `Sign in to eatSo`],
+					[`div`, {style: {[`margin-top`]: `${22}px`}}, 
+						[
+							[`label`, {style: {[`font-size`]: `${10.88}px`, [`margin-bottom`]: `${3}px`}}, `Email`], 
+							[`input`, {id: `email`, placeholder: `Email`, type: `email`, style: {background: `#66666629`, [`block-size`]: `${32}px`, border: `none`, [`font-family`]: `qb`, [`font-size`]: `${11.88}px`, [`letter-spacing`]: `${1.2}px`, outline: `none`, padding: `${8}px ${12}px`, width: `${100}%`}}], 
+							[`label`, {style: {[`font-size`]: `${10.88}px`, [`margin-top`]: `${16}px`, [`margin-bottom`]: `${3}px`}}, `Password`], 
+							[`input`, {id: `salt`, placeholder: `Password`, type: `password`, style: {background: `#66666629`, [`block-size`]: `${32}px`, border: `none`, color: `#fff`, [`font-family`]: `qb`, [`font-size`]: `${11.88}px`, [`letter-spacing`]: `${1.2}px`, outline: `none`, padding: `${8}px ${12}px`, width: `${100}%`}}]]], 
+					[`a`, {id: `emailSalt`, href: `javascript:;`, style: {[`align-content`]: `center`, background: `#eb6538`, [`block-size`]: `${32}px`, color: `#fff`, display: `inline-grid`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${32}px`, [`text-align`]: `center`}}, `Continue`],
+					[`a`, {id: `modalMugup`, href: `javascript:;`, style: {color: `#eb6538`, [`font-size`]: `${11.88}px`, [`margin-top`]: `${16}px`, [`text-align`]: `center`}}, `Sign up`]]];
+
+			return [`main`, {style: {background: `#fff`, margin: `auto`, [`max-width`]: `${400}px`, width: `${100}%`}}, 
+				[[`section`, {style: {[`font-family`]: `qb`, margin: `${24}px`, [`max-width`]: `${100}%`}}, 
+					[[`h1`, {style: {color: `#eb6538`, [`font-family`]: `qb`, [`font-size`]: `${28}px`}}, `eatSo`], DOM[Arg[0]]]]]]
 		},
 
 		multi: (Obj) => {
