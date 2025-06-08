@@ -137,7 +137,7 @@ class Event {
 
 							let Slot = Tools.typen(VAR.parentNode.id);
 
-							let Box = Tools.typen(Clients.box);
+							let Box = Tools.typen(Clients.box), float = 0;
 
 							if (VAR.getAttribute(`role`) === `-`) {
 
@@ -197,6 +197,13 @@ class Event {
 
 								VAR.parentNode.parentNode.querySelector(`.sum`).innerText = parseFloat(Box[Slot[0]].objs[Slot[1]][1]*Box[Slot[0]].objs[Slot[1]][0]).toFixed(2);
 							}
+
+							for (let item in Box) {
+
+								for (let obj in Box[item].objs) {float += parseFloat(Box[item].objs[obj][1]*Box[item].objs[obj][0])}
+							}
+
+							document.querySelector(`#total`).innerText = float.toFixed(2);
 						}]);
 					});
 				}

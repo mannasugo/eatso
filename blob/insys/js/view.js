@@ -113,13 +113,17 @@ let Models = {
 
 			if (!Clients.box) {Clients.box = Tools.coats({})}
 
-			let DOM = [[], []];
+			let DOM = [[], []], float = 0, items = 0;
 
 			for (let item in Tools.typen(Clients.box)) {
+
+				++items;
 
 				DOM[1] = [];
 
 				for (let sub in Tools.typen(Clients.box)[item].objs) {
+
+					float += parseFloat(parseFloat(Tools.typen(Clients.box)[item].objs[sub][0])*parseFloat(Tools.typen(Clients.box)[item].objs[sub][1]))
 
 					DOM[1].push([`div`, {class: `_gxM _geQ`, style: {margin: `${4}px ${0}`}}, 
 						[
@@ -161,9 +165,18 @@ let Models = {
 									[[`svg`, {id: `boxClose`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${12}px`, width: `${12}px`}}, 
 										[[`path`, {fill: `none`, stroke: `#000`, [`stroke-width`]: 2, d: `M0 6 12 18 24 6`}]]]]]]], 
 						[`div`, {style: {height: `calc(100vh)`, [`max-height`]: `calc(100vh - 188px)`, [`overflow-y`]: `scroll`, padding: `${0}px ${16}px`}}, DOM[0]]]], 
-					[`div`, {style: {background: `#fff`, bottom: 0, position: `absolute`, width: `${100}%`}}, 
+					[`div`, {style: {background: `#fff`, bottom: 0, display: (items > 0)? `flex` :`none`, position: `absolute`, width: `${100}%`}}, 
 						[[`div`, {style: {margin: `${24}px`}}, 
-							[[`a`, {id: ``, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `proceed to checkout`]]]]]]]
+							[
+								[`div`, {class: `_gxM _geQ`, style: {display: (items > 0)? `flex` :`none`, [`margin-bottom`]: `${12}px`}}, 
+									[
+										[`span`, {style: {[`font-size`]: `${13}px`}}, `Sub total`], 
+										[`div`, {class: `_gZz`}, 
+											[[`div`, {class: `_gxM`, style: {[`font-size`]: `${15}px`, [`font-weight`]: 600, [`justify-content`]: `end`}}, 
+												[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {id: `total`}, `${parseFloat(float).toFixed(2)}`]]]]]]],
+								[`div`, {style: {display: (!Clients.mug)? `flex`: `none`, [`margin-bottom`]: `${12}px`}}, 
+									[[`span`, {style: {[`font-size`]: `${13}px`}}, `Almost There`], [`span`, {style: {color: `#747474`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `Signin or Signup to place an order`]]],
+								[`a`, {id: ``, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, (!Clients.mug)? `Continue`: `proceed to checkout`]]]]]]]
 		},
 
 		multi: (Obj) => {
@@ -188,7 +201,7 @@ let Models = {
 									[[`text`, {[`font-size`]: `${16}px`, [`stroke-width`]: 1, [`text-anchor`]: `middle`, x: 12, y: `16`}, `+`]]]]]]]);
 			});
 
-			return [`div`, {style: {bottom: 0, left: 0, margin: `auto`, [`max-width`]: `${360}px`, position: `absolute`, right: 0, width: `${100}%`}}, 
+			return [`div`, {style: {bottom: 0, left: 0, margin: `auto`, [`max-width`]: `${480}px`, position: `absolute`, right: 0, width: `${100}%`}}, 
 				[[`div`, {style: {background: `#fff`, width: `${100}%`}}, 
 					[
 						[`div`, {class: `_gxM _geQ`, style: {[`border-bottom`]: `${1}px solid #ececec`, padding: `${10}px ${16}px`}}, 
