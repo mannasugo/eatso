@@ -218,6 +218,35 @@ class Event {
 
 						this.mug();
 					}
+
+					if (Clients.mug) {
+
+						View.pop();
+
+						View.DOM([`#modal`, [Models.app.pay()]]);
+
+						let Box = Tools.typen(Clients.box), float = 0;
+
+						for (let item in Box) {
+
+							for (let obj in Box[item].objs) {float += parseFloat(Box[item].objs[obj][1]*Box[item].objs[obj][0])}
+						}
+
+						document.querySelector(`#total`).innerText = float.toFixed(2);
+
+						this.listen([document.querySelector(`#callSlot`), `keyup`, S => {
+
+							let Slot = this.getSource(S);
+
+							if (!parseInt(Slot.value)) Slot.value = 0;
+
+							if (Slot.value.length > 9) Slot.value = Slot.value.substr(0, 8);
+
+							Slot.value = parseInt(Slot.value);
+						}]);
+
+						this.listen([document.querySelector(`#payx`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
+					}
 				}]);
 
 				this.listen([document.querySelector(`#boxClose`), `click`, S => {document.querySelector(`#modal`).style.display = `none`}]);
