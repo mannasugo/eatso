@@ -6,6 +6,8 @@ const { createHash } = require(`crypto`);
 
 const { Constants, Sql, Tools } = require(`./tools`);
 
+const XHR = require(`https`);
+
 const hold = new Date(`1996-01-20`).valueOf();
 
 const DAY = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`).valueOf(); 
@@ -154,6 +156,71 @@ class Route {
 
 											Arg[1].end(Tools.coats({md: createHash(`md5`).update(`${TZ}`, `utf8`).digest(`hex`)}));
 										}]);
+									}
+								}
+							}
+
+							if (Pulls.pull === `pay`) {
+
+								if (Raw.mugs[1][Pulls.mug]) {
+
+									if (Pulls.flag === `incoming`) {
+
+										let ts = new Date().valueOf();
+
+										let md = createHash(`md5`).update(`${ts}`, `utf8`).digest(`hex`);
+
+										let POST = XHR.request({
+        									hostname: `backend.payhero.co.ke`,
+        									port: 443,
+        									path: `/api/v2/payments`,
+        									method: `POST`,
+       										headers: {
+       											Authorization: `Basic ZmRqQjFUbmZJT05qZHFlRHc1Wnc6MHVFZEx3aU5YOTZ4anVodm5PSUNXZjBjUUNNeWFlUDRYMjVrbTFoOA==`,
+       											[`Content-Type`]: `application/json`}}, Blob => {
+
+												let blob = ``;
+
+												Blob.on(`data`, (buffer) => {blob += buffer});
+        										
+        										Blob.on('end', () => {
+
+          											if (blob) {
+
+          												console.log(Tools.typen(blob));
+
+          												/**
+
+          												if (TX.id) {
+
+          													Sql.puts([`invoice`, {
+          														complete: false,
+          														float: null,
+          														id: `254` + Slot.call, 
+          														invoice: TX.invoice.invoice_id, 
+          														local: Slot.float,
+          														md: md,
+          														mug: Pulls.client,
+          														ts: ts,
+          														type: `autospot`}, (Bill) => {
+
+																Arg[1].end(Tools.coats({client: Pulls.client}));
+															}]);
+														}
+
+														**/
+          											}
+        										});
+										});
+
+										POST.write(Tools.coats({
+											amount: 10,//parseFloat(Pulls.float),
+											channel_id: 2283,
+											external_reference: md, network_code: `63902`,
+											phone_number: `0799071558`, //+ Pulls.call,
+											provider: `sasapay`}));
+
+										POST.end();
 									}
 								}
 							}
