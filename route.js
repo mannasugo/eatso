@@ -187,37 +187,30 @@ class Route {
 
           											if (blob) {
 
-          												console.log(Tools.typen(blob));
+          												if (Tools.typen(blob).reference) {
 
-          												/**
-
-          												if (TX.id) {
-
-          													Sql.puts([`invoice`, {
-          														complete: false,
-          														float: null,
-          														id: `254` + Slot.call, 
-          														invoice: TX.invoice.invoice_id, 
-          														local: Slot.float,
+          													Sql.puts([`incoming`, {
+          														id: `0` + Pulls.call, 
+          														info: Pulls.box, 
           														md: md,
-          														mug: Pulls.client,
-          														ts: ts,
-          														type: `autospot`}, (Bill) => {
+          														mug: Pulls.mug, 
+          														state: `queue`,
+          														ts: ts
+          														tx: Tools.typen(blob).reference}, (Bill) => {
 
-																Arg[1].end(Tools.coats({client: Pulls.client}));
+																Arg[1].end(Tools.coats({tx: Tools.typen(blob).reference}));
 															}]);
 														}
-
-														**/
           											}
         										});
 										});
 
 										POST.write(Tools.coats({
-											amount: 10,//parseFloat(Pulls.float),
+											amount: parseFloat(Pulls.float),
 											channel_id: 2283,
-											external_reference: md, network_code: `63902`,
-											phone_number: `0799071558`, //+ Pulls.call,
+											external_reference: md, 
+											network_code: `63902`,
+											phone_number: `0` + Pulls.call,
 											provider: `sasapay`}));
 
 										POST.end();
@@ -232,6 +225,54 @@ class Route {
 	}
 
 	io () {}
+
+	pollPay () {
+
+		setInterval(()=> {
+
+			Sql.pulls(Raw => {
+
+				Raw.incoming[0].forEach(Bill => {
+
+					if (Bill.state === `queue`) {
+
+						let POST = XHR.request({
+        					hostname: `backend.payhero.co.ke`,
+        					port: 443,
+        					path: `/api/v2/transaction-status`,
+        					method: `GET`,
+       						headers: {
+       							Authorization: `Basic ZmRqQjFUbmZJT05qZHFlRHc1Wnc6MHVFZEx3aU5YOTZ4anVodm5PSUNXZjBjUUNNeWFlUDRYMjVrbTFoOA==`,
+       							[`Content-Type`]: `application/json`}}, Blob => {
+
+							let blob = ``;
+
+							Blob.on(`data`, (buffer) => {blob += buffer});
+        										
+        					Blob.on('end', () => {
+
+          						if (blob) {
+
+          							if (Tools.typen(blob).status === `SUCCESS`) {
+
+                						let Old = Tools.typen(Tools.coats(Bill));
+
+                						Bill.state = `complete`;
+
+										Sql.places([`invoice`, Bill, Old, (Q) => {}]);
+									}
+          						}
+        					});
+						});
+
+						POST.write(Tools.coats({reference: Bill.tx}));
+
+						POST.end();
+					}
+				});
+			});
+		}, 120000);
+	}
 }
 
 module.exports = new Route();

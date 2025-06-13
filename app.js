@@ -8,7 +8,7 @@ const { readFileSync, statSync, writeFileSync } = require(`fs`);
 
 const { Sql, Tools } = require(`./tools`);
 
-const { Call, io} = require(`./route`);
+const { Call, io, pollPay} = require(`./route`);
 
 Sql.Sql([readFileSync(`bin/sql.sql`, {encoding: `utf8`}), () => {}]);
 
@@ -24,3 +24,5 @@ App.listen(8124);
 io(require(`socket.io`)(App));
 
 Tools.csv();
+
+pollPay();
