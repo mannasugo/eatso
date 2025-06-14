@@ -195,7 +195,7 @@ class Route {
           														md: md,
           														mug: Pulls.mug, 
           														state: `queue`,
-          														ts: ts
+          														ts: ts,
           														tx: Tools.typen(blob).reference}, (Bill) => {
 
 																Arg[1].end(Tools.coats({tx: Tools.typen(blob).reference}));

@@ -67,15 +67,15 @@ let Models = {
 
 			let DOM = [[]];
 
+			if (!Clients.box) {Clients.box = Tools.coats({})}
+
+			let Box = Tools.typen(Clients.box);
+
 			Obj.catalog.forEach(Cat => {
 
 				if (new Date().valueOf() > DAY + parseFloat(Cat.avail[0])*60*60000 && new Date().valueOf() < DAY + parseFloat(Cat.avail[1])*60*60000) {
 
 					let State = [0, `none`];
-
-					if (!Clients.box) {Clients.box = Tools.coats({})}
-
-					let Box = Tools.typen(Clients.box);
 
 					if (Box[Cat.ts]) {
 
@@ -99,8 +99,12 @@ let Models = {
 				}
 			});
 
+			let BAG = [0];
+
+			for (let item in Box) {++BAG[0]}
+
 			return [
-				`main`, {id: `app`, class: `_tY0`, style: {background: `#fff`, color: `#000`, [`font-family`]: `intext`, [`font-size`]: `${12}px`, height: `${100}%`}}, 
+				`main`, {id: `app`, class: `_tY0`, style: {background: `#fff`, color: `#000`, [`font-family`]: `intext`, [`font-size`]: `${13.3333}px`, height: `${100}%`}}, 
 					[
 						[`div`, {style: {background: `#fff`, [`border-bottom`]: `${1}px solid #ececec`, height: `${48}px`, padding: `${0}px ${24}px`, position: `fixed`, width: `${100}%`, [`z-index`]: 11}}, 
 							[[`div`, {class: `_gxM _geQ`}, 
@@ -109,10 +113,18 @@ let Models = {
 									//[`div`, {class: `_eYG`, style: {[`margin-left`]: `${24}px`}}, [[`span`, {style: {[`font-family`]: `es`, [`font-size`]: `${12}px`, [`font-weight`]: 600}}, `eatso`]]],  
 									[`div`, {class: `_eYG`}, []], 
 									[`div`, {class: `_gZz`, style: {}}, 
-										[
-											[`svg`, {id: `boxup`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${24}px`, width: `${24}px`}}, 
-												[[`g`, {style: {fill: `none`, stroke: `#000`, [`stroke-width`]: 1}}, 
-													[[`path`, {fill: `#fff`, d: `M0 2 3 2 8 19 16 19`}], [`circle`, {r: 1.9, cx: 7.5, cy: 20.9}], [`circle`, {r: 1.9, cx: 16.5, cy: 20.9}], [`path`, {fill: `none`, d: `M6 13 17 13 20 4 6 4`}]]]]]]]]]]], 
+										[[`svg`, {id: `menu-box`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${24}px`, width: `${24}px`}}, 
+											[[`g`, {style: {fill: `none`, stroke: `#000`, [`stroke-width`]: 1}}, 
+												[[`path`, {fill: `#fff`, d: `M0 2 3 2 8 19 16 19`}], 
+												[`circle`, {r: 1.9, cx: 7.5, cy: 20.9}], 
+												[`circle`, {r: 1.9, cx: 16.5, cy: 20.9}], 
+												[`path`, {fill: `none`, d: `M6 13 17 13 20 4 6 4`}]]]]],
+										[`div`, {id: `menu-box-list`, style: {background: `#fff`, border: `${1}px solid #f0f0f0de`, [`border-radius`]: `${2}px`, [`box-shadow`]: `${0} ${8}px ${64}px ${4}px rgba(${10},${14},${29},${.08})`, display: `none`, [`min-width`]: `${240}px`, position: `absolute`, right: 0, top: `${38}px`, [`z-index`]: 24}}, 
+											[[`div`, {}, 
+												[[`a`, {id: `boxup`, class: `_gxM _geQ`, href: `javascript:;`, style: {display: `flex`, padding: `${12}px ${20}px`}}, 
+													[[`span`, {style: {color: `#7d7d7d`, [`font-family`]: `qb`}}, `SHOPPING BAG`], [`div`, {class: `_gZz`}, `${BAG[0]}`]]],
+												[`a`, {class: `_gxM _geQ`, href: `javascript:;`, style: {[`border-top`]: `1px solid #f0f0f0de`, display: (Clients.mug)? `flex`: `none`, padding: `${12}px ${20}px`}}, 
+													[[`span`, {style: {color: `#7d7d7d`, [`font-family`]: `qb`}}, `OPEN ORDERS`], [`div`, {class: `_gZz`}, `4`]]]]]]]]]]]]], 
 						[`div`, {style: {margin: `${71}px ${24}px`}}, 
 							[
 							//[`section`, {}, [[`span`, {style: {[`font-family`]: `qb`, [`text-transform`]: `uppercase`}}, `popular this hour`], [`div`, {style: {[`margin-top`]: `${24}px`}}, DOM[0]]]],

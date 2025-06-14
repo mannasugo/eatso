@@ -37,7 +37,7 @@ class Event {
 
 				let Box = Tools.typen(Clients.box);
 
-				if (Catalog[Slot.id].objs.length === 1) {
+				if (Catalog[Slot.id].objs.length === 1) {let items = 0;
 
 					if (VAR.getAttribute(`role`) === `+`) {
 
@@ -94,6 +94,10 @@ class Event {
 							VAR.nextSibling.innerText = (!Box[Slot.id])? 0: Box[Slot.id].objs[VAR.parentNode.id][1];
 						}						
 					}
+
+					for (let item in Box) {++items}
+
+					document.querySelectorAll(`#menu-box-list ._gZz`)[0].innerText = items;
 				}
 
 				if (Catalog[Slot.id].objs.length > 1) {
@@ -108,7 +112,7 @@ class Event {
 
 						this.listen([VAR, `click`, S => {
 
-							let items = 0;
+							let items = 0, bag = 0;
 
 							if (VAR.getAttribute(`role`) === `-`) {
 
@@ -195,6 +199,10 @@ class Event {
 
 								METER[1].style.display = `flex`;
 							}
+
+							for (let item in Box) {++bag}
+
+							document.querySelectorAll(`#menu-box-list ._gZz`)[0].innerText = bag;
 						}]);
 					});
 
@@ -203,7 +211,14 @@ class Event {
 			}]);
 		});
 
+		this.listen([document.querySelector(`#menu-box`), `click`, S => {
+
+			document.querySelector(`#menu-box-list`).style.display = (document.querySelector(`#menu-box-list`).style.display === `flex`)? `none`: `flex`;
+		}]);
+
 		this.listen([document.querySelector(`#boxup`), `click`, S => {
+
+			document.querySelector(`#menu-box-list`).style.display = `none`;
 
 			let boxup = () => {
 
@@ -223,7 +238,7 @@ class Event {
 
 							let METER = document.querySelector(`.g${Slot[0]} .scale`).children;
 
-							let Box = Tools.typen(Clients.box), float = 0, items = 0;
+							let Box = Tools.typen(Clients.box), float = 0, items = 0, bag = 0;
 
 							if (VAR.getAttribute(`role`) === `-`) {
 
@@ -309,8 +324,12 @@ class Event {
 
 							for (let item in Box) {
 
+								++bag;
+
 								for (let obj in Box[item].objs) {float += parseFloat(Box[item].objs[obj][1]*Box[item].objs[obj][0])}
 							}
+
+							document.querySelectorAll(`#menu-box-list ._gZz`)[0].innerText = bag;
 
 							document.querySelector(`#total`).innerText = float.toFixed(2);
 						}]);
