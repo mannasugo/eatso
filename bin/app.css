@@ -24,7 +24,7 @@
 }
 
 @font-face {
-  font-family: intext;
+  font-family: iintext;
   font-style: normal;
   font-weight: 100;   
   src: url(/webclient/get/font/PFDinTextUniversalLight.otf) format("opentype")
@@ -49,6 +49,13 @@
   font-style: normal;
   font-weight: 100;
   src: url(/webclient/get/font/GT-Walsheim-Regular-4ca5b57c.woff2) format("woff2")
+}
+
+@font-face {
+  font-family: intext;
+  font-style: normal;
+  font-weight: 100;
+  src: url(/webclient/get/font/AGB.otf) format("opentype")
 }
 
 a, article, body, div, footer, form, h1, h2, h3, h4, header, html, img, label, li, nav, p, section, span, time, ul {

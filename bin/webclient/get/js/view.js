@@ -123,12 +123,12 @@ let Models = {
 											[[`div`, {}, 
 												[[`a`, {id: `boxup`, class: `_gxM _geQ`, href: `javascript:;`, style: {display: `flex`, padding: `${12}px ${20}px`}}, 
 													[[`span`, {style: {color: `#7d7d7d`, [`font-family`]: `qb`}}, `SHOPPING BAG`], [`div`, {class: `_gZz`}, `${BAG[0]}`]]],
-												[`a`, {class: `_gxM _geQ`, href: `javascript:;`, style: {[`border-top`]: `1px solid #f0f0f0de`, display: (Clients.mug)? `flex`: `none`, padding: `${12}px ${20}px`}}, 
+												[`a`, {class: `_gxM _geQ`, href: `javascript:;`, style: {[`border-top`]: `1px solid #f0f0f0de`, display: /*(Clients.mug)? `flex`:*/ `none`, padding: `${12}px ${20}px`}}, 
 													[[`span`, {style: {color: `#7d7d7d`, [`font-family`]: `qb`}}, `OPEN ORDERS`], [`div`, {class: `_gZz`}, `4`]]]]]]]]]]]]], 
 						[`div`, {style: {margin: `${71}px ${24}px`}}, 
 							[
-							//[`section`, {}, [[`span`, {style: {[`font-family`]: `qb`, [`text-transform`]: `uppercase`}}, `popular this hour`], [`div`, {style: {[`margin-top`]: `${24}px`}}, DOM[0]]]],
-								[`section`, {}, [[`span`, {style: {[`font-family`]: `qb`, [`text-transform`]: `uppercase`}}, `order it again`], [`div`, {style: {[`margin-top`]: `${24}px`}}, DOM[0]]]]]], 
+							[`section`, {}, [[`span`, {style: {[`font-family`]: `qb`, [`text-transform`]: `uppercase`}}, `popular this hour`], [`div`, {style: {[`margin-top`]: `${24}px`}}, DOM[0]]]],
+								/*[`section`, {}, [[`span`, {style: {[`font-family`]: `qb`, [`text-transform`]: `uppercase`}}, `order it again`], [`div`, {style: {[`margin-top`]: `${24}px`}}, DOM[0]]]]*/]], 
 						[`div`, {id: `modal`, style: {background: `rgba(${217}, ${217}, ${217}, ${0.8})`, bottom: 0, display: `none`, position: `fixed`, top: 0, width: `${100}%`, [`z-index`]: 18}}]]];
 		}, 
 
