@@ -107,7 +107,7 @@ class Tools {
 
 			Obj.push({
 				avail: Value[1].split(`-`),
-				img: Value[0] + `.${Value[2]}`,
+				img: Value[0] + `.${Value[2].toLowerCase()}`,
 				label: Value[4].toLowerCase(),
 				mass: Value[3].split(`-`)[0],
 				objs: Vols,
