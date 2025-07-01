@@ -107,13 +107,13 @@ class Tools {
 
 			Obj.push({
 				avail: Value[1].split(`-`),
-				img: new Date(Value[0]).valueOf() + `.${Value[2]}`,
+				img: Value[0] + `.${Value[2]}`,
 				label: Value[4].toLowerCase(),
 				mass: Value[3].split(`-`)[0],
 				objs: Vols,
-				ts: new Date(Value[0]).valueOf()
+				ts: parseFloat(Value[0])
 			});
-		});
+		});console.log(Obj)
 
 		writeFileSync(`bin/json/catalog.json`, this.coats(Obj));
 	}			
