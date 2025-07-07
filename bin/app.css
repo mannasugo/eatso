@@ -562,12 +562,22 @@ section > div {
 
 @media (max-width: 1600px) {
 
+  section > div > div {width: 11.111111%}
+}
+
+@media (max-width: 1500px) {
+
   section > div > div {width: 12.5%}
 }
 
 @media (max-width: 1400px) {
 
-  section > div > div {width: 18%}
+  section > div > div {width: 12.5%}
+}
+
+@media (max-width: 1200px) {
+
+  section > div > div {width: 16.666667%}
 }
 
 @media (max-width: 1000px) {
