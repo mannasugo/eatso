@@ -182,7 +182,7 @@ let Models = {
 							[ 
 								[`div`, {style: {[`font-weight`]: 300}}, 
 									[
-										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `capitalize`}}, `Review Cart`],
+										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `uppercase`}}, `Review Cart`],
 										[`span`, {style: {color: `#9d9d9d`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `eatSo`]]], 
 								[`div`, {class: `_gZz`}, 
 									[[`svg`, {id: `boxClose`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, height: `${12}px`, width: `${12}px`}}, 
@@ -193,13 +193,13 @@ let Models = {
 							[
 								[`div`, {class: `_gxM _geQ`, style: {display: (items > 0)? `flex` :`none`, [`margin-bottom`]: `${12}px`}}, 
 									[
-										[`span`, {style: {[`font-size`]: `${13}px`}}, `Sub total`], 
+										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `uppercase`}}, `Sub total`], 
 										[`div`, {class: `_gZz`}, 
 											[[`div`, {class: `_gxM`, style: {[`font-size`]: `${15}px`, [`font-weight`]: 300, [`justify-content`]: `end`}}, 
 												[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {id: `total`}, `${parseFloat(float).toFixed(2)}`]]]]]]],
 								[`div`, {style: {display: (!Clients.mug)? `flex`: `none`, [`margin-bottom`]: `${12}px`}}, 
 									[[`span`, {style: {[`font-size`]: `${13}px`}}, `Almost There`], [`span`, {style: {color: `#747474`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `Signin or Signup to place an order`]]],
-								[`a`, {id: `paymug`, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, (!Clients.mug)? `Continue`: `proceed to checkout`]]]]]]]
+								[`a`, {id: `paymug`, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13}px`, [`font-weight`]: 300, [`padding`]: `${12}px`, [`text-align`]: `center`, [`text-transform`]: `uppercase`, width: `${100}%`}}, (!Clients.mug)? `Continue`: `proceed to checkout`]]]]]]]
 		}, 
 
 		inputMug: (Arg) => {
@@ -290,7 +290,7 @@ let Models = {
 							[ 
 								[`div`, {style: {[`font-weight`]: 300}}, 
 									[
-										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `capitalize`}}, `Checkout`],
+										[`span`, {style: {[`font-size`]: `${13}px`, [`text-transform`]: `uppercase`}}, `Checkout`],
 										[`span`, {style: {color: `#9d9d9d`, [`font-size`]: `${11}px`, [`margin-top`]: `${3}px`}}, `eatSo`]]], 
 								[`div`, {class: `_gZz _geQ`}, 
 									[
@@ -304,16 +304,16 @@ let Models = {
 								[[`span`, {style: {margin: `${12}px ${0} ${0}`, }}, `Pay with`],
 								[`span`, {style: {margin: `${12}px ${0} ${0} ${8}px`, [`text-decoration`]: `underline`}}, `M-PESA(Mobile Money)`]]],
 							[`div`, {style: {[`margin-top`]: `${18}px`}}, 
-								[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, [`font-family`]: `insvg`, [`font-size`]: `${13.33333}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
+								[[`div`, {class: `_gxM _geQ`, style: {border: `1px solid rgba(${193}, ${193}, ${193}, ${.25})`, [`border-radius`]: `${100}px`, [`font-family`]: `intext`, [`font-size`]: `${13.33333}px`, height: `${36}px`, padding: `${12}px ${16}px`}}, 
 									[[`img`, {src: `/webclient/get/svg/geopo/ke.svg`, style: {[`max-width`]: `${18}px`}}],
 										[`div`, {class: `_gxM`, style: {[`margin-left`]: `${8}px`}}, 
 											[[`span`, {style: {color: `#515151`}}, `+254`]]], 
 										[`div`, {class: `_gZz`}, 
 											[[`div`, {style: {[`line-height`]: `${32}px`, width: `${100}%`}}, 
 												[[`div`, {class: `_gxM _gZz _geQ`}, 
-													[[`input`, {id: `callSlot`, placeholder: `712345678`, style: {background: `transparent`, [`border-style`]: `none`, [`font-family`]: `insvg`, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
-							[`a`, {id: `mpesa`, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13.33333}px`, margin: `${18}px ${0}`, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `Continue`],
-							[`a`, {id: `payx`, href: `javascript:;`, style: {color: `#7d7d7d`, [`font-size`]: `${11.33333}px`, margin: `${0}px ${0} ${18}px`, [`text-align`]: `center`, width: `${100}%`}}, `cancel`]]]]]]]
+													[[`input`, {id: `callSlot`, placeholder: `712345678`, style: {background: `transparent`, [`border-style`]: `none`, [`font-family`]: `intext`, [`letter-spacing`]: `${.75}px`, outline: `none`, padding: 0, [`text-align`]: `right`, width: `${100}%`}}]]]]]]]]]]],
+							[`a`, {id: `mpesa`, href: `javascript:;`, style: {background: `#eb6538`, color: `#fff`, [`font-size`]: `${13.33333}px`, margin: `${18}px ${0}`, [`padding`]: `${12}px`, [`text-align`]: `center`, width: `${100}%`}}, `CONTINUE`],
+							[`a`, {id: `payx`, href: `javascript:;`, style: {color: `#7d7d7d`, [`font-size`]: `${11.33333}px`, margin: `${0}px ${0} ${18}px`, [`text-align`]: `center`, width: `${100}%`}}, `CANCEL`]]]]]]]
 		}
 	}
 }

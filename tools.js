@@ -8,6 +8,8 @@ const { createHash } = require(`crypto`);
 
 const RQ = require(`request`);
 
+const Mail = require(`nodemailer`);
+
 const hold = new Date(`1996-01-20`).valueOf();
 
 const DAY = new Date(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`).valueOf();
@@ -113,15 +115,76 @@ class Tools {
 				objs: Vols,
 				ts: parseFloat(Value[0])
 			});
-		});console.log(Obj)
+		});
 
 		writeFileSync(`bin/json/catalog.json`, this.coats(Obj));
+	}
+
+	mailto (Arg) {
+
+    async function mailto (Arg) {
+
+      let Vessel = Mail.createTransport({
+        host: `smtp.eatso.store`,
+        port: 587,
+        secure: false,
+        auth: {user: Arg[0], pass: Arg[1]}
+      });
+
+      let MailOptions = {
+        from: `"eatSO Grit & Grub" <${Arg[0]}>`,
+        to: Arg[2],
+        subject: Arg[3][0],
+        text: Arg[3][1].toString(),
+        html: Arg[3][2].toString(),
+      };
+
+      try {
+      	let info = await Vessel.sendMail(MailOptions)} catch (error) {console.error("Error sending email:", error)}
+    }
+
+    mailto(Arg);
 	}			
 
 	typen (coat) {return JSON.parse(coat)}
 }
 
+let Constants = {
+
+	mail: {
+
+		init: [
+			`Welcome to eatSO`,
+
+			`Hi there!\n\n` +
+			`We're stoked you're here! You've just joined many who use eatSO to experience and enjoy our food and meal products, ` + 
+			`delivered to you whenever and wherever you need it at competent pricing and rates.\n\n` +
+			`Regards from\n` +
+ 			`eatSO`, 
+
+			`<!DOCTYPE html>
+				<html>
+					<head>
+						<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head>
+  				<body>
+    				<div align="center">
+    					<a href="https://eatso.store/webclient/get/png/eatso.png">
+    						<img moz-do-not-send="false" src="https://eatso.store/webclient/get/png/eatso.png" alt="logo"><br></a></div>
+    				<div align="center"><br></div>
+    				<div align="left">Hi there!</div>
+    				<div align="left"><br></div>
+    				<div align="left">We're stoked you're here! You've just joined many who use eatSO to experience and enjoy
+        			our food and meal products, delivered to you whenever and wherever you need it at competent pricing and rates</div>
+    				<div align="left"><br></div>
+    				<div align="left">Regards from</div>
+    				<div align="left">eatSO</div></body></html>`
+    ]
+	}
+}
+
 module.exports = {
+
+	Constants: Constants,
 	
 	Sql : new Sql([{
 		host: `127.0.0.1`,
