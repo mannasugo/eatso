@@ -28,7 +28,7 @@ class Route {
 
 		if (State.length === 4 && State[3] === ``) { 
 
-			document.title = `eatSO`;
+			document.title = `eatSO - Grit & Grub`;
 
 			let XHR = Tools.pull([
 				`/json/web`, {

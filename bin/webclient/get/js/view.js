@@ -84,13 +84,13 @@ let Models = {
 						if (State[0] > 0) {State[1] = `flex`};
 					}
 				
-					DOM[0].push([`div`, {id: Cat.ts, class: `g${Cat.ts}`, style: {[`margin-bottom`]: `${24}px`}}, 
-						[[`img`, {src: `webclient/get/catalog/${Cat.img}`, style: {[`margin-bottom`]: `${8}px`}}],
+					DOM[0].push([`div`, {id: Cat.ts, class: `g${Cat.ts}`, style: {height: `${180}px`, [`justify-content`]: `end`, [`margin-bottom`]: `${24}px`}}, 
+						[[`img`, {src: `webclient/get/catalog/${Cat.img}`, style: {margin: `${0} auto ${8}px`, width: `${70}%`}}],
 						[`div`, {class: `_gxM`, style: {[`font-family`]: ``,[`font-size`]: `${12.88}px`, [`font-weight`]: 600}}, 
 							[[`span`, {style: {[`align-items`]: `top`, color: `#7d7d7d`, display: `flex`, [`font-size`]: `${7.88}px`, [`margin-right`]: `${4}px`}}, `KES`], [`span`, {}, `${parseFloat(Cat.objs[0][1]).toFixed(2)}`]]],
 						[`span`, {style: {[`font-family`]: ``,[`font-size`]: `${11}px`, margin: `${4}px ${0}`, overflow: `hidden`, [`text-transform`]: `capitalize`, [`text-overflow`]: `ellipsis`, [`white-space`]: `nowrap`}}, Cat.label.replaceAll(`_`, ` `)],
 						[`span`, {style: {[`font-size`]: `${10}px`}}, Cat.objs[0][0] + Cat.mass.toLowerCase()],
-						[`div`, {id: Cat.objs[0][0], class: `_geQ scale`, style: {background: `#000000e3`, color: `#fff`, position: `absolute`, right: 0}}, 
+						[`div`, {id: Cat.objs[0][0], class: `_geQ scale`, style: {background: `#000000e3`, top: 0, color: `#fff`, position: `absolute`, right: 0}}, 
 							[[`svg`, {class: `box`, role: `-`, viewbox: `0 0 24 24`, style: {cursor: `pointer`, display: State[1], height: `${11}px`, margin: `${8}px`, width: `${11}px`}}, 
 								[[`path`, {fill: `#000`, stroke: `#fff`, [`stroke-width`]: 1, d: `M0 12 24 12 `}]]], 
 							[`span`, {style: {background: `#fff`, color: `#000`, display: State[1], [`font-family`]: `insvg`, [`font-size`]: `${10.88}px`, [`justify-content`]: `center`, padding: `${8}px`, width: `${100}%`}}, `${State[0]}`],
